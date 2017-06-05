@@ -29,7 +29,8 @@
 	        }
 	        $sets = implode(',', $sets);
 	        $sql = "UPDATE $tabela SET $sets WHERE $colunaPrimay = '$id'";
-	        return $this->executar($sql); 
+	        $result = $this->executar($sql); 
+	        return $result;
 	    }
 
 	    public function select($tabela, $colunas = "*") {
@@ -40,7 +41,7 @@
 
 	    function executar($query) {	    
 	    	$result = $this->mysqli->query($query);
-		    return $result->fetch_assoc();
+			return $result;
 	    }
 	}
 ?>
