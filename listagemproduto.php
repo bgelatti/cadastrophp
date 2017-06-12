@@ -12,7 +12,7 @@
 		    require_once 'conexao.php';
 		    $conexao = new Conexao('localhost', 'cadastro', 'root', 'root', 3306);               
     		$select = $conexao->select('produto'); 
-            echo "<Table><tr><td>id</td><td>nome</td><td>preco</td></tr>";
+            echo "<Table><tr><td>id</td><td>nome</td><td>preco</td><td>editar</td><td>deletar</td></tr>";
     		foreach ($select as $value) {
                 echo "<tr>";
                 echo "<td>";
@@ -23,6 +23,12 @@
                 echo "</td>";
                 echo "<td>";
                 echo $value['preco'];
+                echo "</td>";
+                echo "<td>";
+                echo "<a href='cadastroproduto.php?id={$value["id"]}&nome={$value["nome"]}&preco={$value["preco"]}'>Editar</a>";
+                echo "</td>";
+                echo "<td>";
+                echo "<a href=''>Apagar</a>";
                 echo "</td>";
                 echo "</tr>";
     		}
