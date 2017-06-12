@@ -5,9 +5,13 @@
         $id = $_GET["id"];
 		$nome = $_GET["nome"];
 		$preco = $_GET["preco"];
-    }	
+    } else {
+    	$id = "";
+		$nome = "";
+		$preco = "";
+    }
 
-    if (isset($_POST['nome']) && isset($_POST['preco'])) {
+    if (isset($_POST['nome'])) {
     	if ($_POST['id'] !== '') {
     		atualizar($_POST['id'], $_POST['nome'], $_POST['preco']);
     	} else {
@@ -35,6 +39,6 @@
 <form action="" method="post">
 	Id:  <input type="text" name="id" readonly="true" value="<?php echo $id; ?>"/><br />
     Nome:  <input type="text" name="nome" value="<?php echo $nome; ?>" /><br />
-    Preço: <input type="text" name="preco" value="<?php echo $preco; ?>"/><br />
+    Preço: <input type="decimal" name="preco" value="<?php echo $preco; ?>"/><br />
     <input type="submit" name="submit" value="Salvar" />
 </form>

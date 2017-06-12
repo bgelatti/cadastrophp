@@ -1,6 +1,4 @@
 <?php
-
-	//Variáveis de acesso Db
 	define('DB_SERVER', 'localhost');
 	define('DB_NAME', 'cadastro');
 	define('DB_USERNAME', 'root');
@@ -23,12 +21,12 @@
 	        return $this->executar($sql);
 	    }
 
-	    public function update($tabela, $colunaPrimay, $id, $dados) {
+	    public function update($tabela, $colunaPrimary, $id, $dados) {
 	        foreach ($dados as $key => $value) {
 	            $sets[] = $key . '=\'' . $value . '\'';
 	        }
 	        $sets = implode(',', $sets);
-	        $sql = "UPDATE $tabela SET $sets WHERE $colunaPrimay = '$id'";
+	        $sql = "UPDATE $tabela SET $sets WHERE $colunaPrimary = '$id'";
 	        $result = $this->executar($sql); 
 	        return $result;
 	    }
@@ -36,6 +34,13 @@
 	    public function select($tabela, $colunas = "*") {
 	        $sql = "SELECT $colunas FROM $tabela";
 	        $result = $this->executar($sql);
+	        return $result;
+	    }
+
+	    public function delete($colunaPrimary, $id, $tabela) {
+	    	$sql = "DELETE FROM $tabela WHERE $colunaPrimary = $id"; 
+	    	echo $sql;
+	    	$result = $this->executar($sql); 
 	        return $result;
 	    }
 
